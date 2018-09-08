@@ -236,7 +236,7 @@
     window.addEventListener("load", function(e) {
         if("serviceWorker" in navigator) {
             try {
-                navigator.serviceWorker.register("../sw.js");
+                navigator.serviceWorker.register("./sw.js");
             } catch (error) {
                 console.error("serviceworker not registered", error);
             }
