@@ -3,6 +3,69 @@
     var ONE_HOUR = 60 * 60,
         COUNTERS = [
             { 
+                id: "clock",
+                title: "Clock",
+                type: "various",
+                img: "clock.jpg",
+                time: ONE_HOUR * 0.5
+            },
+            { 
+                id: "blackbear",
+                title: "Black Bear Quest",
+                type: "various",
+                img: "blackbear.jpg",
+                time: ONE_HOUR
+            },
+            { 
+                id: "brownbear",
+                title: "Brown Bear",
+                type: "various",
+                img: "brownbear.jpg",
+                time: ONE_HOUR * 4
+            },
+            { 
+                id: "werewolf",
+                title: "Werewolf",
+                type: "enemy",
+                img: "werewolf.jpg",
+                time: ONE_HOUR
+            },
+            { 
+                id: "spider",
+                title: "Spider",
+                type: "enemy",
+                img: "spider.jpg",
+                time: ONE_HOUR / 2
+            },
+            { 
+                id: "scorpion",
+                title: "Scorpion",
+                type: "enemy",
+                img: "scorpion.jpg",
+                time: ONE_HOUR / 3
+            },
+            { 
+                id: "mantis",
+                title: "Mantis",
+                type: "enemy",
+                img: "mantis.jpg",
+                time: ONE_HOUR / 3
+            },
+            { 
+                id: "kingbeetle",
+                title: "King Beetle",
+                type: "enemy",
+                img: "kingbeetle.jpg",
+                time: ONE_HOUR * 24
+            },
+            { 
+                id: "tunnelbear",
+                title: "Tunnel Bear",
+                type: "enemy",
+                img: "tunnelbear.jpg",
+                time: ONE_HOUR * 48
+            },
+            { 
                 id: "redbooster",
                 title: "Red Booster",
                 type: "booster",
@@ -45,53 +108,32 @@
                 time: ONE_HOUR * 4
             },
             { 
+                id: "royaljellydis",
+                title: "Royal Jelly Dispenser",
+                type: "consumable",
+                img: "royeljellydis.jpg",
+                time: ONE_HOUR * 24
+            },
+            { 
+                id: "honeystorm",
+                title: "Honey Storm",
+                type: "various",
+                img: "honeystorm.jpg",
+                time: ONE_HOUR * 4
+            },
+            { 
+                id: "plantsprout",
+                title: "Plant Sprout",
+                type: "various",
+                img: "plantsprout.jpg",
+                time: ONE_HOUR * 8
+            },
+            { 
                 id: "antdis",
                 title: "Ant Dispenser",
                 type: "consumable",
                 img: "antdispenser.jpg",
                 time: ONE_HOUR * 2
-            },
-            { 
-                id: "blackbear",
-                title: "Black Bear Quest",
-                type: "various",
-                img: "blackbear.jpg",
-                time: ONE_HOUR
-            },
-            { 
-                id: "werewolf",
-                title: "Werewolf",
-                type: "enemy",
-                img: "werewolf.jpg",
-                time: ONE_HOUR
-            },
-            { 
-                id: "spider",
-                title: "Spider",
-                type: "enemy",
-                img: "spider.jpg",
-                time: ONE_HOUR / 2
-            },
-            { 
-                id: "scorpion",
-                title: "Scorpion",
-                type: "enemy",
-                img: "scorpion.jpg",
-                time: ONE_HOUR / 3
-            },
-            { 
-                id: "mantis",
-                title: "Mantis",
-                type: "enemy",
-                img: "mantis.jpg",
-                time: ONE_HOUR / 3
-            },
-            { 
-                id: "kingbeetle",
-                title: "King Beetle",
-                type: "enemy",
-                img: "kingbeetle.jpg",
-                time: ONE_HOUR * 24
             },
             { 
                 id: "clubdis",
@@ -100,36 +142,6 @@
                 img: "clubdispenser.jpg",
                 time: ONE_HOUR
             },
-            { 
-                id: "royaljellydis",
-                title: "Royal Jelly Dispenser",
-                type: "consumable",
-                img: "royeljellydis.jpg",
-                time: ONE_HOUR * 24
-            },
-/*
-            { 
-                id: "tunnelbear",
-                title: "Tunnel Bear",
-                type: "enemy",
-                img: "kingbeetle.jpg",
-                time: ONE_HOUR * 48
-            },
-            { 
-                id: "honeystorm",
-                title: "Honey Storm",
-                type: "consumable",
-                img: "kingbeetle.jpg",
-                time: ONE_HOUR * 4
-            },
-            { 
-                id: "brownbear",
-                title: "Brown Bear Daily Quest",
-                type: "various",
-                img: "kingbeetle.jpg",
-                time: ONE_HOUR * 4 // TODO build something special for this !!
-            },
-*/
         ],
         STORAGE = {
             getObject : function(name) {
