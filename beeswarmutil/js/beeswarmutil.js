@@ -1,6 +1,22 @@
 (function() {
 
-    var ONE_HOUR = 60 * 60,
+    var STORAGE = {
+        getObject : function(name) {
+            try {
+                return ((JSON.parse(window.localStorage.getItem(name || "bss-config"))) || {});
+            } catch(e) {
+                return {};
+            }
+        },
+        setObject : function(object, name) {
+            if(object) {
+                window.localStorage.setItem(name || "bss-config", JSON.stringify(object));
+            }
+        }
+    };
+
+    var monsterRespawnTime = STORAGE.getObject().giftedVicious ? 0.85 : 1,
+        ONE_HOUR = 60 * 60,
         COUNTERS = [
             { 
                 id: "clock",
@@ -28,42 +44,42 @@
                 title: "Werewolf",
                 type: "enemy",
                 img: "werewolf.jpg",
-                time: ONE_HOUR
+                time: ONE_HOUR * monsterRespawnTime
             },
             { 
                 id: "spider",
                 title: "Spider",
                 type: "enemy",
                 img: "spider.jpg",
-                time: ONE_HOUR / 2
+                time: (ONE_HOUR / 2) * monsterRespawnTime
             },
             { 
                 id: "scorpion",
                 title: "Scorpion",
                 type: "enemy",
                 img: "scorpion.jpg",
-                time: ONE_HOUR / 3
+                time: (ONE_HOUR / 3) * monsterRespawnTime
             },
             { 
                 id: "mantis",
                 title: "Mantis",
                 type: "enemy",
                 img: "mantis.jpg",
-                time: ONE_HOUR / 3
+                time: (ONE_HOUR / 3) * monsterRespawnTime
             },
             { 
                 id: "kingbeetle",
                 title: "King Beetle",
                 type: "enemy",
                 img: "kingbeetle.jpg",
-                time: ONE_HOUR * 24
+                time: (ONE_HOUR * 24) * monsterRespawnTime
             },
             { 
                 id: "tunnelbear",
                 title: "Tunnel Bear",
                 type: "enemy",
                 img: "tunnelbear.jpg",
-                time: ONE_HOUR * 48
+                time: (ONE_HOUR * 48) * monsterRespawnTime
             },
             { 
                 id: "redbooster",
@@ -143,20 +159,6 @@
                 time: ONE_HOUR
             },
         ],
-        STORAGE = {
-            getObject : function(name) {
-                try {
-                    return ((JSON.parse(window.localStorage.getItem("bss-counter"))) || {});
-                } catch(e) {
-                    return {};
-                }
-            },
-            setObject : function(name, object) {
-                if(name && object) {
-                    window.localStorage.setItem(name, JSON.stringify(object));
-                }
-            }
-        },
         getNowInSeconds = function() {
             return Math.round(new Date().getTime()/1000);
         };
@@ -178,7 +180,7 @@
         data: function () {
             return {
                 secondsToGo: 0,
-                startedAt: (STORAGE.getObject("bss-config")[this.config.id] || 0),
+                startedAt: (STORAGE.getObject()[this.config.id] || 0),
                 interval: undefined,
                 reset: 0
             }
@@ -189,14 +191,12 @@
                     this.reset += 3;
                     if(this.reset > 6) {
                         this.stop();
+                        this.saveInStorage();
                     }
                 
                 } else {
-                    var bss = STORAGE.getObject("bss-config");
                     this.startedAt = getNowInSeconds();
-                    bss[this.config.id] = this.startedAt;
-                    STORAGE.setObject("bss-counter", bss);
-
+                    this.saveInStorage();
                     this.doInterval();
                     this.interval = setInterval(this.doInterval, 1000);
                 }
@@ -206,6 +206,11 @@
                 this.startedAt = 0;
                 this.reset = 0;
                 clearInterval(this.interval);
+            },
+            saveInStorage: function() {
+                var bss = STORAGE.getObject();
+                bss[this.config.id] = this.startedAt;
+                STORAGE.setObject(bss);
             },
             doInterval: function() {
                 if(this.reset > 0) {
@@ -234,6 +239,29 @@
                     READY
                 </div>
             </li>
+        `
+    });
+
+    Vue.component("bss-vicious", {
+        data: function () {
+            return {
+                gifted : (STORAGE.getObject().giftedVicious || false),
+            }
+        },
+        methods: {
+            toggleGifted() {
+                this.gifted = !this.gifted;
+                this.save();
+                window.location.reload();
+            },
+            save() {
+                var bss = STORAGE.getObject();
+                bss.giftedVicious = this.gifted;
+                STORAGE.setObject(bss);
+            }
+        },
+        template: `
+            <li class="vicious" v-bind:class="{ gifted: gifted }" v-on:click="toggleGifted"></li>
         `
     });
 

@@ -35,6 +35,25 @@ div.countdown.ready {
 div.countdown.reset {
     background-color: orange;
 }
+li.vicious {
+    flex: 1 0 26%;
+    margin: 6px 0px 0px 6px;
+    height: 104px;
+    background-color: #222222;
+    background-position: center 7px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    margin-right: 6px;
+    background-image: url('../images/vicious-normal.png');
+    border: 4px solid #222222;
+    box-sizing: border-box;
+}
+li.vicious.gifted {
+    background-image: url('../images/vicious-gifted.png');
+    border-color: gold;
+    
+}
 
 
 /* http://meyerweb.com/eric/tools/css/reset/
