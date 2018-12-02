@@ -19,13 +19,6 @@
         ONE_HOUR = 60 * 60,
         COUNTERS = [
             { 
-                id: "clock",
-                title: "Clock",
-                type: "various",
-                img: "clock.jpg",
-                time: ONE_HOUR * 0.5
-            },
-            { 
                 id: "blackbear",
                 title: "Black Bear Quest",
                 type: "various",
@@ -38,13 +31,6 @@
                 type: "various",
                 img: "brownbear.jpg",
                 time: ONE_HOUR * 4
-            },
-            { 
-                id: "werewolf",
-                title: "Werewolf",
-                type: "enemy",
-                img: "werewolf.jpg",
-                time: ONE_HOUR * monsterRespawnTime
             },
             { 
                 id: "spider",
@@ -68,6 +54,13 @@
                 time: (ONE_HOUR / 3) * monsterRespawnTime
             },
             { 
+                id: "werewolf",
+                title: "Werewolf",
+                type: "enemy",
+                img: "werewolf.jpg",
+                time: ONE_HOUR * monsterRespawnTime
+            },
+            { 
                 id: "kingbeetle",
                 title: "King Beetle",
                 type: "enemy",
@@ -80,6 +73,34 @@
                 type: "enemy",
                 img: "tunnelbear.jpg",
                 time: (ONE_HOUR * 48) * monsterRespawnTime
+            },
+            { 
+                id: "snail",
+                title: "Stump Snail",
+                type: "enemy",
+                img: "snail.jpg",
+                time: (ONE_HOUR * 96) * monsterRespawnTime
+            },
+            { 
+                id: "clock",
+                title: "Clock",
+                type: "various",
+                img: "clock.jpg",
+                time: ONE_HOUR
+            },
+            { 
+                id: "honeystorm",
+                title: "Honey Storm",
+                type: "various",
+                img: "honeystorm.jpg",
+                time: ONE_HOUR * 4
+            },
+            { 
+                id: "plantsprout",
+                title: "Plant Sprout",
+                type: "various",
+                img: "plantsprout.jpg",
+                time: ONE_HOUR * 16
             },
             { 
                 id: "redbooster",
@@ -124,25 +145,18 @@
                 time: ONE_HOUR * 4
             },
             { 
+                id: "gluedispencer",
+                title: "Glue Dispenser",
+                type: "consumable",
+                img: "gluedispenser.jpg",
+                time: ONE_HOUR * 22
+            },
+            { 
                 id: "royaljellydis",
                 title: "Royal Jelly Dispenser",
                 type: "consumable",
                 img: "royeljellydis.jpg",
                 time: ONE_HOUR * 24
-            },
-            { 
-                id: "honeystorm",
-                title: "Honey Storm",
-                type: "various",
-                img: "honeystorm.jpg",
-                time: ONE_HOUR * 4
-            },
-            { 
-                id: "plantsprout",
-                title: "Plant Sprout",
-                type: "various",
-                img: "plantsprout.jpg",
-                time: ONE_HOUR * 8
             },
             { 
                 id: "antdis",
