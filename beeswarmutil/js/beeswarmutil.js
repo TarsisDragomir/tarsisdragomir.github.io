@@ -156,7 +156,7 @@
                 title: "Royal Jelly Dispenser",
                 type: "consumable",
                 img: "royeljellydis.jpg",
-                time: ONE_HOUR * 24
+                time: ONE_HOUR * 22
             },
             { 
                 id: "antdis",
