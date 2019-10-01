@@ -19,18 +19,11 @@
         ONE_HOUR = 60 * 60,
         COUNTERS = [
             { 
-                id: "blackbear",
-                title: "Black Bear Quest",
+                id: "windshrine",
+                title: "Wind Shrine",
                 type: "various",
-                img: "blackbear.jpg",
+                img: "windshrine.jpg",
                 time: ONE_HOUR
-            },
-            { 
-                id: "brownbear",
-                title: "Brown Bear",
-                type: "various",
-                img: "brownbear.jpg",
-                time: ONE_HOUR * 4
             },
             { 
                 id: "spider",
@@ -68,6 +61,13 @@
                 time: (ONE_HOUR * 24) * monsterRespawnTime
             },
             { 
+                id: "cococrab",
+                title: "Coconut Crab",
+                type: "enemy",
+                img: "cococrab.jpg",
+                time: (ONE_HOUR * 36) * monsterRespawnTime
+            },
+            { 
                 id: "tunnelbear",
                 title: "Tunnel Bear",
                 type: "enemy",
@@ -82,10 +82,45 @@
                 time: (ONE_HOUR * 96) * monsterRespawnTime
             },
             { 
+                id: "blackbear",
+                title: "Black Bear Quest",
+                type: "various",
+                img: "blackbear.jpg",
+                time: ONE_HOUR
+            },
+            { 
+                id: "brownbear",
+                title: "Brown Bear",
+                type: "various",
+                img: "brownbear.jpg",
+                time: ONE_HOUR * 4
+            },
+            { 
                 id: "clock",
                 title: "Clock",
                 type: "various",
                 img: "clock.jpg",
+                time: ONE_HOUR
+            },
+            { 
+                id: "redbooster",
+                title: "Red Booster",
+                type: "booster",
+                img: "redbooster.jpg",
+                time: ONE_HOUR
+            },
+            { 
+                id: "bluebooster",
+                title: "Blue Booster",
+                type: "booster",
+                img: "bluebooster.jpg",
+                time: ONE_HOUR
+            },
+            { 
+                id: "tmbooster",
+                title: "Top Mountain Booster",
+                type: "booster",
+                img: "tmbooster.jpg",
                 time: ONE_HOUR
             },
             { 
@@ -101,27 +136,6 @@
                 type: "various",
                 img: "plantsprout.jpg",
                 time: ONE_HOUR * 16
-            },
-            { 
-                id: "redbooster",
-                title: "Red Booster",
-                type: "booster",
-                img: "redbooster.jpg",
-                time: ONE_HOUR * 2
-            },
-            { 
-                id: "bluebooster",
-                title: "Blue Booster",
-                type: "booster",
-                img: "bluebooster.jpg",
-                time: ONE_HOUR * 2
-            },
-            { 
-                id: "tmbooster",
-                title: "Top Mountain Booster",
-                type: "booster",
-                img: "tmbooster.jpg",
-                time: ONE_HOUR * 2
             },
             { 
                 id: "treatdis",
@@ -142,6 +156,13 @@
                 title: "Blue Dispenser",
                 type: "consumable",
                 img: "bluedispenser.jpg",
+                time: ONE_HOUR * 4
+            },
+            { 
+                id: "cocodis",
+                title: "Coconut Dispenser",
+                type: "consumable",
+                img: "coconutdispenser.jpg",
                 time: ONE_HOUR * 4
             },
             { 
@@ -178,7 +199,9 @@
         };
 
     Vue.filter("timeInHours", function(value) {
-        let hours =  parseInt(Math.floor(value / 3600)); 
+        let days = parseInt(Math.floor(value / (3600 * 24)));
+        value = value - ((3600 * 24) * days);
+        let hours = parseInt(Math.floor(value / 3600)); 
         let minutes = parseInt(Math.floor((value - (hours * 3600)) / 60)); 
         let seconds= parseInt((value - ((hours * 3600) + (minutes * 60))) % 60); 
 
@@ -186,7 +209,7 @@
         let dMins = (minutes > 9 ? minutes : "0" + minutes);
         let dSecs = (seconds > 9 ? seconds : "0" + seconds);
 
-        return dHours + ":" + dMins + ":" + dSecs;
+        return (days ? days + ":" : "") + dHours + ":" + dMins + ":" + dSecs;
     });
 
     Vue.component("bss-counter", {
